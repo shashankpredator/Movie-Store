@@ -1,0 +1,61 @@
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+      <a class="navbar-brand" href="#">W Movies</a>
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item active">
+          <a class="nav-link" id ="Home" routerLink="/Home" routerLinkActive="active">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item ">
+            <button type="button" class="btn btn-light" data-toggle="modal" data-target="#exampleMo">
+                Add Movies
+              </button>
+        </li>
+        <div class="dropdown show">
+          <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Geners
+          </a>
+        
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item"  (click)="(onAction('Action'))" routerLink="/Gener">Action</a>
+            <a class="dropdown-item" (click)="(onAction('Comedy'))" routerLink="/Gener">Comedy</a>
+            <a class="dropdown-item" (click)="(onAction('Thriller'))" routerLink="/Gener">Thriller</a>
+          </div>
+        </div>
+      </ul>
+      
+    </div>
+  </nav>
+  <router-outlet></router-outlet>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleMo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLab" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLab">Add Movies</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="address" (ngSubmit)="onSubmit()" >
+            Movie Name : <input type="text" formControlName="MovieName"  name="MovieName" class="form-control" required >
+            Release Year : <input type="text" name="R_Year" class="form-control" formControlName="R_Year" required>
+            Gener : <input type="text" name="Gener" class="form-control"  formControlName="Gener" required >
+            Actor Name : <input type="text" name="ActorName" class="form-control" required formControlName="ActorName" required>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal" [disabled] = "!address.valid"routerLink="">Close</button>
+              <button type="button" class="btn btn-primary" [disabled] = "!address.valid"type="submit">Add Movies</button>
+            </div>  
+          </form>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+  

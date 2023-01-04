@@ -1,0 +1,28 @@
+
+
+<div class="c">
+  <p style="color:rgb(38, 38, 78);">
+    Welcome to World of Movies
+  </p>
+</div>
+<div class="container">
+  
+    <form class="example-form"[formGroup]="formGroup">
+      <mat-form-field class="example-full-width">
+        <mat-label>
+          Search
+        </mat-label>
+        <input id ="MovieName" formControlName="MovieSearch" matInput type="text" [matAutocomplete]="auto" />
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let item of filteredOptions" [value]="item">
+            {{item}}
+            
+          </mat-option>
+         
+        </mat-autocomplete>
+        
+      </mat-form-field>
+      <button id="submit-button" class="btn btn-dark" style="margin-left: 1050px;" (click)="onSubmit()" routerLink="/View">Search</button>
+    </form>
+  
+</div>

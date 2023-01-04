@@ -1,0 +1,45 @@
+
+  <div class ='row'>
+  <div class="card"  *ngFor = "let mv of Movie">
+
+    <div class="container">
+        
+        <h4><b>{{mv.MovieName}}</b></h4> 
+        <p>{{mv.R_Year}}</p> 
+        <p>{{mv.Gener}}</p>
+        <p>{{mv.ActorName}}</p>
+        <mat-card-actions>
+            <button mat-button (click)="onEdit(mv.MovieName)" data-toggle="modal" data-target="#exampleModal"><i class="material-icons">&#xe22b;</i></button>
+            <button mat-button (click)="onDelete(mv.MovieName)"> <i class="material-icons">delete</i></button>
+            <button mat-button (click)="onView(mv.MovieName)" routerLink="/View"><i class="material-icons">&#xe3c4;</i></button>
+            
+          </mat-card-actions>
+      </div>
+  </div>
+</div>
+<router-outlet></router-outlet>
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title" id="exampleModalLabel">Edit Movies</h2>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="address" (ngSubmit)="onSubmit()" >
+            Movie Name : <input type="text" formControlName="MovieName" name="MovieName" class="form-control" disabled>
+            Release Year : <input type="text" name="R_Year" class="form-control" formControlName="R_Year" >
+            Gener : <input type="text" name="Gener" class="form-control" formControlName="Gener" >
+            Actor Name : <input type="text" name="ActorName" class="form-control" formControlName="ActorName" >
+            <div class="modal-footer">
+              <button class="btn btn-primary" type="submit">Save Changes</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
